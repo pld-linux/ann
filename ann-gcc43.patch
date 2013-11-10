@@ -1,0 +1,26 @@
+diff -Naur ann_1.1.2.orig/src/kd_dump.cpp ann_1.1.2/src/kd_dump.cpp
+--- ann_1.1.2.orig/src/kd_dump.cpp	2010-01-28 05:40:01.000000000 +0100
++++ ann_1.1.2/src/kd_dump.cpp	2013-03-22 15:59:40.675142146 +0100
+@@ -31,6 +31,9 @@
+ // desired.)
+ //----------------------------------------------------------------------
+ 
++#include <cstring>						// C standard string
++#include <cstdlib>						// C standard lib
++
+ #include "kd_tree.h"					// kd-tree declarations
+ #include "bd_tree.h"					// bd-tree declarations
+ 
+diff -Naur ann_1.1.2.orig/test/ann_test.cpp ann_1.1.2/test/ann_test.cpp
+--- ann_1.1.2.orig/test/ann_test.cpp	2010-01-28 05:40:01.000000000 +0100
++++ ann_1.1.2/test/ann_test.cpp	2013-03-22 15:59:40.676142171 +0100
+@@ -37,6 +37,9 @@
+ //		Allow round-off error in validation test
+ //----------------------------------------------------------------------
+ 
++#include <cstring>						// C standard string
++#include <cstdlib>						// C standard lib
++
+ #include <ctime>						// clock
+ #include <cmath>						// math routines
+ #include <cstring>						// C string ops

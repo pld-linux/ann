@@ -1,0 +1,43 @@
+diff -Naur ann_1.1.2.orig/Make-config ann_1.1.2/Make-config
+--- ann_1.1.2.orig/Make-config	2010-01-28 05:40:01.000000000 +0100
++++ ann_1.1.2/Make-config	2013-03-22 15:56:58.290617102 +0100
+@@ -67,6 +67,14 @@
+ #				files in the MS_WIN32 directory).
+ #-----------------------------------------------------------------------------
+ 
++#					Linux shared library using g++
++linux:
++	$(MAKE) targets \
++	"ANNLIB = libANN.so.1.0" \
++	"ANNDEVLIB = libANN.so" \
++	"C++ = g++" \
++	"MAKELIB = $(C++) -shared -Wl,-soname -Wl,libANN.so.1 -o" \
++	"RANLIB = true"
+ #					Linux using g++
+ linux-g++:
+ 	$(MAKE) targets \
+diff -Naur ann_1.1.2.orig/Makefile ann_1.1.2/Makefile
+--- ann_1.1.2.orig/Makefile	2010-01-28 05:40:01.000000000 +0100
++++ ann_1.1.2/Makefile	2013-03-22 15:56:58.290617102 +0100
+@@ -56,7 +56,7 @@
+ #-----------------------------------------------------------------------------
+ # main make entry point
+ #-----------------------------------------------------------------------------
+-alpha-g++ macosx-g++ linux-g++ sgi sunos4 sunos4-g++ sunos5 sunos5-g++ sunos5-g++-sl authors-debug authors-perf:
++alpha-g++ macosx-g++ linux linux-g++ sgi sunos4 sunos4-g++ sunos5 sunos5-g++ sunos5-g++-sl authors-debug authors-perf:
+ 	cd src ; $(MAKE) $@
+ 	cd test ; $(MAKE) $@
+ 	cd sample ; $(MAKE) $@
+diff -Naur ann_1.1.2.orig/src/Makefile ann_1.1.2/src/Makefile
+--- ann_1.1.2.orig/src/Makefile	2010-01-28 05:40:01.000000000 +0100
++++ ann_1.1.2/src/Makefile	2013-03-22 15:56:58.290617102 +0100
+@@ -56,7 +56,8 @@
+ $(LIBDIR)/$(ANNLIB): $(OBJECTS)
+ 	$(MAKELIB) $(ANNLIB) $(OBJECTS)
+ 	$(RANLIB) $(ANNLIB)
+-	mv $(ANNLIB) $(LIBDIR)
++	[ -z "$(ANNDEVLIB)" ] || ln -s $(ANNLIB) $(ANNDEVLIB)
++	mv $(ANNLIB) $(ANNDEVLIB) $(LIBDIR)
+ 
+ #-----------------------------------------------------------------------------
+ # Make object files
