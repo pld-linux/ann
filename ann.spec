@@ -90,6 +90,7 @@ install bin/ann2fig $RPM_BUILD_ROOT%{_bindir}
 install lib/libANN.so.1.0 $RPM_BUILD_ROOT%{_libdir}
 ln -sf libANN.so.1.0 $RPM_BUILD_ROOT%{_libdir}/libANN.so.1
 ln -sf libANN.so.1.0 $RPM_BUILD_ROOT%{_libdir}/libANN.so
+cp -p include/ANN/*.h $RPM_BUILD_ROOT%{_includedir}/ANN
 
 # create pkg-config file
 cat >$RPM_BUILD_ROOT%{_pkgconfigdir}/ann.pc <<'EOF'
