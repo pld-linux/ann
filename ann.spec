@@ -55,8 +55,8 @@ Statyczna biblioteka ANN.
 
 %prep
 %setup -q -n %{name}_%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %if %{with static_libs}
