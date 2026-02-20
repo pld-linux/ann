@@ -6,7 +6,7 @@ Summary:	Library for searching Approximate Nearest Neighbors
 Summary(pl.UTF-8):	Biblioteka do przybliżonego wyszukiwania najbliższych sąsiadów
 Name:		ann
 Version:	1.1.2
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: http://www.cs.umd.edu/~mount/ANN/
